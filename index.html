@@ -38,11 +38,15 @@
         .modal-overlay.active {
             display: flex;
         }
+        #comment-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <nav class="absolute w-full z-50 transition-all duration-300 px-6 py-4" id="navbar">
+    <nav class="absolute w-full z-50 px-6 py-4" id="navbar">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <span class="text-2xl font-bold gradient-text">🎬 영화감상토론반</span>
@@ -51,6 +55,7 @@
                 <a href="#home" class="hover:text-purple-600 transition text-gray-600">홈</a>
                 <a href="#movies" class="hover:text-purple-600 transition text-gray-600">감상영화</a>
                 <a href="#discussion" class="hover:text-purple-600 transition text-gray-600">토론마당</a>
+                <a href="#padlet" class="hover:text-purple-600 transition text-gray-600">패들랫</a>
             </div>
             <div class="flex items-center space-x-2">
                 <span id="admin-badge" class="hidden bg-red-100 text-red-600 text-[10px] font-bold px-2 py-1 rounded-md border border-red-200">ADMIN</span>
@@ -66,7 +71,6 @@
             <div class="absolute top-20 left-10 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 floating"></div>
             <div class="absolute bottom-20 right-10 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 floating" style="animation-delay: 1s;"></div>
         </div>
-        
         <div class="relative z-10 text-center px-4">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 영화를 통해 <span class="gradient-text">세상을 읽고,</span><br>
@@ -74,11 +78,11 @@
             </h1>
             <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
                 중학교 1, 2학년 친구들이 함께하는 영화감상토론반.<br>
-                매트릭스와 트루먼쇼를 넘어, 새로운 시각을 발견하는 여정입니다.
+                새로운 시각을 발견하는 즐거운 여정입니다.
             </p>
             <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
                 <a href="#movies" class="bg-white border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full font-bold hover:bg-purple-50 transition">지난 영화 보기</a>
-                <a href="#discussion" class="bg-purple-600 text-white px-8 py-3 rounded-full font-bold hover:bg-purple-700 transition shadow-xl">토론 참여하기</a>
+                <a href="#padlet" class="bg-purple-600 text-white px-8 py-3 rounded-full font-bold hover:bg-purple-700 transition shadow-xl">패들랫 바로가기</a>
             </div>
         </div>
     </section>
@@ -89,35 +93,33 @@
                 <h2 class="text-3xl font-bold mb-4">지금까지 감상한 영화</h2>
                 <div class="h-1 w-20 bg-purple-500 mx-auto rounded-full"></div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Matrix -->
-                <div class="group relative bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <!-- Movie 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-2xl transition hover:-translate-y-2">
                     <div class="h-80 overflow-hidden relative">
-                        <img src="https://placehold.co/800x600/1a202c/48bb78?text=THE+MATRIX" alt="매트릭스" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 backdrop-blur-sm">
-                            <p class="text-white text-lg font-bold px-8 text-center">"진짜 현실은 무엇일까?"<br>파란 약과 빨간 약의 선택</p>
+                        <img src="https://placehold.co/800x600/1a202c/48bb78?text=THE+MATRIX" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition backdrop-blur-sm">
+                            <p class="text-white text-lg font-bold">"진짜 현실은 무엇일까?"</p>
                         </div>
                     </div>
                     <div class="p-8">
-                        <span class="inline-block px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-bold mb-3 uppercase tracking-wider">Sci-Fi / Philosophy</span>
-                        <h3 class="text-2xl font-bold mb-2">매트릭스 (The Matrix, 1999)</h3>
-                        <p class="text-gray-600 mb-6">내가 믿고 있는 세상이 가짜라면? 자유의지와 선택에 대해 깊이 있는 대화를 나누었습니다.</p>
+                        <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-bold mb-3 inline-block">매트릭스 (1999)</span>
+                        <h3 class="text-2xl font-bold mb-2">진실과 선택</h3>
+                        <p class="text-gray-600">내가 믿는 세상이 가짜라면? 자유의지에 대해 나눴습니다.</p>
                     </div>
                 </div>
-
-                <!-- Truman Show -->
-                <div class="group relative bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <!-- Movie 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-2xl transition hover:-translate-y-2">
                     <div class="h-80 overflow-hidden relative">
-                        <img src="https://placehold.co/800x600/4299e1/ffffff?text=THE+TRUMAN+SHOW" alt="트루먼 쇼" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-blue-500/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 backdrop-blur-sm">
-                            <p class="text-white text-lg font-bold px-8 text-center">"굿 모닝, 굿 애프터눈, 굿 나잇!"<br>거짓된 세상을 벗어날 용기</p>
+                        <img src="https://placehold.co/800x600/4299e1/ffffff?text=THE+TRUMAN+SHOW" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-blue-500/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition backdrop-blur-sm">
+                            <p class="text-white text-lg font-bold">"세상은 거대한 세트장일까?"</p>
                         </div>
                     </div>
                     <div class="p-8">
-                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-bold mb-3 uppercase tracking-wider">Comedy / Drama</span>
-                        <h3 class="text-2xl font-bold mb-2">트루먼 쇼 (The Truman Show, 1998)</h3>
-                        <p class="text-gray-600 mb-6">전 세계가 나의 삶을 지켜보고 있다면? 미디어의 윤리와 진정한 행복의 의미를 찾았습니다.</p>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-bold mb-3 inline-block">트루먼 쇼 (1998)</span>
+                        <h3 class="text-2xl font-bold mb-2">진정한 자아 찾기</h3>
+                        <p class="text-gray-600">거짓된 안락함과 힘겨운 진실 사이의 용기를 배웠습니다.</p>
                     </div>
                 </div>
             </div>
@@ -132,30 +134,19 @@
                         <h2 id="display-theme-title" class="text-2xl font-bold">진행 중인 토론 테마</h2>
                         <p id="display-theme-subtitle" class="text-purple-600 font-medium">트루먼 쇼의 결말, 당신의 선택은?</p>
                     </div>
-                    <button onclick="toggleThemeModal()" class="bg-white p-3 rounded-2xl shadow-sm hover:shadow-md hover:bg-purple-100 transition-all group">
-                        <i class="fas fa-bullhorn text-purple-500 text-xl group-hover:scale-110 transition-transform"></i>
+                    <button onclick="toggleThemeModal()" class="bg-white p-3 rounded-2xl shadow-sm hover:bg-purple-100 transition group">
+                        <i class="fas fa-bullhorn text-purple-500 text-xl"></i>
                     </button>
                 </div>
-
                 <div class="space-y-4 mb-8" id="comment-container">
-                    <!-- 기본 댓글 예시 -->
                     <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-start space-x-4">
                         <div class="w-10 h-10 rounded-full bg-blue-200 flex-shrink-0 flex items-center justify-center text-blue-600 font-bold text-lg">민</div>
                         <div>
                             <p class="text-sm font-bold">김민준 (중2)</p>
-                            <p class="text-gray-700 mt-1 text-sm">저라면 트루먼처럼 무조건 나갈 거예요. 가짜 삶 속에서 편안하게 사는 것보다 힘들어도 진짜 내 삶을 사는 게 중요하니까요!</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-start space-x-4">
-                        <div class="w-10 h-10 rounded-full bg-pink-200 flex-shrink-0 flex items-center justify-center text-pink-600 font-bold text-lg">서</div>
-                        <div>
-                            <p class="text-sm font-bold">이서연 (중1)</p>
-                            <p class="text-gray-700 mt-1 text-sm">하지만 트루먼에게는 그 세트장이 평생 지내온 고향이잖아요. 밖으로 나갔을 때의 두려움도 엄청날 것 같아요.</p>
+                            <p class="text-gray-700 mt-1 text-sm">가짜 삶 속에서 편안하게 사는 것보다 힘들어도 진짜 내 삶을 사는 게 중요해요!</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Input area -->
                 <div class="relative">
                     <input type="text" id="comment-input" placeholder="여러분의 생각을 한 줄로 남겨주세요..." 
                            class="w-full bg-white px-6 py-4 rounded-full border-2 border-purple-100 focus:outline-none focus:border-purple-400 transition pr-24 text-sm">
@@ -163,11 +154,47 @@
                         등록
                     </button>
                 </div>
-                <p id="login-tip" class="text-center text-xs text-purple-400 mt-3 hidden">로그인 후에 의견을 남길 수 있습니다.</p>
+                <p id="login-tip" class="text-center text-xs text-purple-400 mt-3 hidden">로그인이 필요합니다.</p>
             </div>
         </div>
     </section>
 
+    <section id="padlet" class="py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">우리들의 패들랫</h2>
+                <p class="text-gray-600 mb-8">다양한 아이디어를 포스트잇처럼 자유롭게 붙여보세요!</p>
+                <div class="h-1 w-20 bg-purple-500 mx-auto rounded-full mb-10"></div>
+            </div>
+            
+            <div class="relative w-full overflow-hidden rounded-[2rem] shadow-2xl bg-white border-4 border-white" style="height: 700px;">
+                <iframe src="https://padlet.com/won0162/padlet-bit85zjoio6l17p3" 
+                        frameborder="0" 
+                        allow="camera;microphone;geolocation" 
+                        style="width: 100%; height: 100%; border-radius: 1.5rem;"></iframe>
+            </div>
+            
+            <div class="mt-10 text-center">
+                <a href="https://padlet.com/won0162/padlet-bit85zjoio6l17p3" target="_blank" 
+                   class="inline-flex items-center space-x-3 bg-purple-100 text-purple-700 px-6 py-3 rounded-full font-bold hover:bg-purple-200 transition">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>패들랫을 새 창에서 크게 열기</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <span class="text-2xl font-bold text-white mb-2 block">🎬 영화감상토론반</span>
+            <p class="text-sm">성장하는 우리들의 깊이 있는 영화 이야기</p>
+            <div class="mt-10 pt-10 border-t border-gray-800 text-xs">
+                &copy; 2024 영화감상토론반. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
     <div id="login-modal" class="modal-overlay fixed inset-0 z-[100] items-center justify-center p-4">
         <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform transition-all duration-300 scale-95 opacity-0" id="modal-content">
             <div class="text-center mb-6">
@@ -175,289 +202,171 @@
                     <i class="fas fa-user-graduate"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-gray-800">환영합니다!</h3>
-                <p class="text-gray-500 mt-2">이름과 학년을 선택해 주세요.</p>
+                <p class="text-gray-500 mt-2">이름과 소속을 선택해 주세요.</p>
             </div>
-            
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm font-semibold text-gray-600 mb-1 ml-2">성함/이름</label>
-                    <input type="text" id="user-name-input" placeholder="예: 홍길동" 
-                           class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-5 py-3 focus:border-purple-400 focus:outline-none transition">
+                    <input type="text" id="user-name-input" placeholder="예: 홍길동" class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-5 py-3 focus:border-purple-400 focus:outline-none">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-gray-600 mb-1 ml-2">소속/학년</label>
-                    <select id="user-grade-input" class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-5 py-3 focus:border-purple-400 focus:outline-none transition">
+                    <select id="user-grade-input" class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-5 py-3 focus:border-purple-400 focus:outline-none">
                         <option value="중1">중학교 1학년</option>
                         <option value="중2">중학교 2학년</option>
                         <option value="선생님">선생님</option>
                     </select>
                 </div>
-                
                 <div class="flex items-center space-x-2 px-2 py-2 bg-gray-50 rounded-xl border border-gray-100">
-                    <input type="checkbox" id="admin-toggle" class="w-4 h-4 text-purple-600 rounded focus:ring-purple-500" onchange="toggleAdminField()">
-                    <label for="admin-toggle" class="text-sm font-medium text-gray-600 select-none cursor-pointer">관리자로 로그인</label>
+                    <input type="checkbox" id="admin-toggle" class="w-4 h-4 text-purple-600" onchange="toggleAdminField()">
+                    <label for="admin-toggle" class="text-sm font-medium text-gray-600 cursor-pointer">관리자로 로그인</label>
                 </div>
-
-                <div id="admin-password-container" class="hidden space-y-1">
+                <div id="admin-password-container" class="hidden">
                     <label class="block text-xs font-semibold text-red-500 ml-2">관리자 비밀번호</label>
-                    <input type="password" id="admin-password-input" placeholder="비밀번호 입력" 
-                           class="w-full bg-red-50 border-2 border-red-100 rounded-2xl px-5 py-3 focus:border-red-400 focus:outline-none transition">
+                    <input type="password" id="admin-password-input" class="w-full bg-red-50 border-2 border-red-100 rounded-2xl px-5 py-3 focus:border-red-400 focus:outline-none">
                 </div>
-
-                <button onclick="performLogin()" class="w-full bg-purple-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-purple-700 transition shadow-lg mt-2">
-                    입장하기
-                </button>
-                <button onclick="toggleLoginModal()" class="w-full text-gray-400 py-2 text-sm hover:text-gray-600 transition">
-                    닫기
-                </button>
+                <button onclick="performLogin()" class="w-full bg-purple-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-purple-700 transition shadow-lg">입장하기</button>
+                <button onclick="toggleLoginModal()" class="w-full text-gray-400 py-2 text-sm">닫기</button>
             </div>
         </div>
     </div>
 
+    <!-- Theme Modal -->
     <div id="theme-modal" class="modal-overlay fixed inset-0 z-[100] items-center justify-center p-4">
         <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform transition-all duration-300 scale-95 opacity-0" id="theme-modal-content">
             <div class="text-center mb-6">
                 <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                     <i class="fas fa-edit"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800">새 토론 주제 만들기</h3>
-                <p class="text-gray-500 mt-2">오늘 함께 이야기 나눌 주제를 정해볼까요?</p>
+                <h3 class="text-2xl font-bold text-gray-800">토론 주제 설정</h3>
             </div>
-            
             <div class="space-y-4">
                 <div>
-                    <label class="block text-sm font-semibold text-gray-600 mb-1 ml-2">대주제 (예: 영화 제목)</label>
-                    <input type="text" id="theme-title-input" placeholder="예: [매트릭스] 현실과 가상" 
-                           class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-5 py-3 focus:border-blue-400 focus:outline-none transition">
+                    <label class="block text-sm font-semibold text-gray-600 mb-1 ml-2">메인 주제</label>
+                    <input type="text" id="theme-title-input" class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-5 py-3 focus:border-blue-400 focus:outline-none">
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-600 mb-1 ml-2">토론 질문</label>
-                    <textarea id="theme-subtitle-input" placeholder="예: 여러분이라면 빨간 약을 먹을 건가요?" 
-                              class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-5 py-3 focus:border-blue-400 focus:outline-none transition h-24 resize-none"></textarea>
+                    <label class="block text-sm font-semibold text-gray-600 mb-1 ml-2">세부 질문</label>
+                    <input type="text" id="theme-subtitle-input" class="w-full bg-gray-50 border-2 border-gray-100 rounded-2xl px-5 py-3 focus:border-blue-400 focus:outline-none">
                 </div>
-                <button onclick="updateTheme()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-blue-700 transition shadow-lg mt-2">
-                    주제 업데이트
-                </button>
-                <button onclick="toggleThemeModal()" class="w-full text-gray-400 py-2 text-sm hover:text-gray-600 transition">
-                    취소
-                </button>
+                <button onclick="updateTheme()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-blue-700 transition">변경하기</button>
+                <button onclick="toggleThemeModal()" class="w-full text-gray-400 py-2 text-sm">취소</button>
             </div>
         </div>
     </div>
 
-    <div id="custom-message-box" class="fixed top-10 left-1/2 -translate-x-1/2 z-[110] hidden">
-        <div class="bg-white border-2 border-purple-200 px-8 py-4 rounded-full shadow-xl flex items-center space-x-3">
-            <span id="msg-icon" class="text-purple-600 text-xl">✨</span>
-            <span id="msg-text" class="text-gray-800 font-semibold">메시지 내용</span>
-        </div>
+    <div id="custom-message-box" class="hidden fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] bg-white px-8 py-4 rounded-full shadow-2xl border-2 border-purple-100 flex items-center space-x-3">
+        <span id="msg-icon"></span>
+        <span id="msg-text" class="font-bold text-gray-800"></span>
     </div>
-
-    <footer class="bg-gray-900 text-gray-400 py-12 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0">
-                <span class="text-2xl font-bold text-white mb-2 block">🎬 영화감상토론반</span>
-                <p class="text-sm">성장하는 우리들의 깊이 있는 영화 이야기</p>
-            </div>
-            <div class="flex space-x-6 text-xl">
-                <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-white"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="hover:text-white"><i class="far fa-envelope"></i></a>
-            </div>
-        </div>
-        <div class="mt-10 pt-10 border-t border-gray-800 text-center text-xs">
-            &copy; 2024 영화감상토론반. All Rights Reserved.
-        </div>
-    </footer>
 
     <script>
-        // 전역 상태
-        let currentUser = {
-            name: '',
-            grade: '',
-            isLoggedIn: false,
-            isAdmin: false
-        };
+        let currentUser = { name: '', grade: '', isLoggedIn: false, isAdmin: false };
 
-        // 관리자 비번 필드 노출 제어
         function toggleAdminField() {
             const isChecked = document.getElementById('admin-toggle').checked;
-            const container = document.getElementById('admin-password-container');
-            if (isChecked) {
-                container.classList.remove('hidden');
-            } else {
-                container.classList.add('hidden');
-            }
+            document.getElementById('admin-password-container').classList.toggle('hidden', !isChecked);
         }
 
-        // 주제 설정 모달 토글
-        function toggleThemeModal() {
-            if (!currentUser.isLoggedIn) {
-                showMessage('먼저 로그인을 해주세요!', '🔒');
-                toggleLoginModal();
-                return;
-            }
-
-            // 관리자 권한 체크
-            if (!currentUser.isAdmin) {
-                showMessage('관리자(선생님)만 주제를 변경할 수 있습니다.', '🚫');
-                return;
-            }
-
-            const modal = document.getElementById('theme-modal');
-            const content = document.getElementById('theme-modal-content');
-            
-            if (modal.style.display === 'flex') {
-                content.classList.remove('scale-100', 'opacity-100');
-                content.classList.add('scale-95', 'opacity-0');
-                setTimeout(() => { modal.style.display = 'none'; }, 200);
-            } else {
-                document.getElementById('theme-title-input').value = document.getElementById('display-theme-title').innerText;
-                document.getElementById('theme-subtitle-input').value = document.getElementById('display-theme-subtitle').innerText;
-                
-                modal.style.display = 'flex';
-                setTimeout(() => {
-                    content.classList.remove('scale-95', 'opacity-0');
-                    content.classList.add('scale-100', 'opacity-100');
-                }, 10);
-            }
-        }
-
-        // 로그인 모달 토글
         function toggleLoginModal() {
             const modal = document.getElementById('login-modal');
             const content = document.getElementById('modal-content');
-            
             if (modal.style.display === 'flex') {
-                content.classList.remove('scale-100', 'opacity-100');
-                content.classList.add('scale-95', 'opacity-0');
+                content.classList.replace('scale-100', 'scale-95');
+                content.classList.replace('opacity-100', 'opacity-0');
                 setTimeout(() => { modal.style.display = 'none'; }, 200);
             } else {
                 modal.style.display = 'flex';
                 setTimeout(() => {
-                    content.classList.remove('scale-95', 'opacity-0');
-                    content.classList.add('scale-100', 'opacity-100');
+                    content.classList.replace('scale-95', 'scale-100');
+                    content.classList.replace('opacity-0', 'opacity-100');
                 }, 10);
             }
         }
 
-        // 로그인 실행 (관리자 로직 포함)
         function performLogin() {
             const name = document.getElementById('user-name-input').value.trim();
             const grade = document.getElementById('user-grade-input').value;
             const isAdminRequest = document.getElementById('admin-toggle').checked;
             const adminPass = document.getElementById('admin-password-input').value;
 
-            if (!name) {
-                showMessage('이름을 입력해 주세요!', '⚠️');
-                return;
-            }
+            if (!name) { showMessage('이름을 입력해 주세요!', '⚠️'); return; }
 
-            // 관리자 비번 확인 (1234)
             if (isAdminRequest) {
-                if (adminPass !== '1234') {
-                    showMessage('관리자 비밀번호가 틀렸습니다.', '❌');
-                    return;
-                }
+                if (adminPass !== '1234') { showMessage('비밀번호가 틀렸습니다.', '❌'); return; }
                 currentUser.isAdmin = true;
                 document.getElementById('admin-badge').classList.remove('hidden');
-            } else {
-                currentUser.isAdmin = false;
-                document.getElementById('admin-badge').classList.add('hidden');
             }
 
             currentUser.name = name;
             currentUser.grade = grade;
             currentUser.isLoggedIn = true;
 
-            // UI 업데이트
             document.getElementById('login-btn').innerText = currentUser.isAdmin ? `${name} (관리자)` : `${name} (${grade})`;
             document.getElementById('login-btn').classList.replace('bg-purple-600', currentUser.isAdmin ? 'bg-red-500' : 'bg-green-500');
-            document.getElementById('login-tip').classList.add('hidden');
             
             toggleLoginModal();
-            showMessage(currentUser.isAdmin ? '관리자 모드로 접속했습니다.' : `반가워요, ${name} 학생!`, currentUser.isAdmin ? '👑' : '👋');
+            showMessage(currentUser.isAdmin ? '선생님, 환영합니다!' : `반가워요, ${name}!`, '👋');
         }
 
-        // 주제 업데이트 실행 (관리자용)
+        function toggleThemeModal() {
+            if (!currentUser.isLoggedIn) { showMessage('먼저 로그인해 주세요!', '🔒'); toggleLoginModal(); return; }
+            if (!currentUser.isAdmin) { showMessage('관리자(선생님) 전용 기능입니다.', '🚫'); return; }
+
+            const modal = document.getElementById('theme-modal');
+            const content = document.getElementById('theme-modal-content');
+            if (modal.style.display === 'flex') {
+                content.classList.replace('scale-100', 'scale-95');
+                content.classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => { modal.style.display = 'none'; }, 200);
+            } else {
+                document.getElementById('theme-title-input').value = document.getElementById('display-theme-title').innerText;
+                document.getElementById('theme-subtitle-input').value = document.getElementById('display-theme-subtitle').innerText;
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    content.classList.replace('scale-95', 'scale-100');
+                    content.classList.replace('opacity-0', 'opacity-100');
+                }, 10);
+            }
+        }
+
         function updateTheme() {
             const newTitle = document.getElementById('theme-title-input').value.trim();
             const newSubtitle = document.getElementById('theme-subtitle-input').value.trim();
-
-            if (!newTitle || !newSubtitle) {
-                showMessage('모든 내용을 입력해 주세요!', '⚠️');
-                return;
-            }
-
+            if (!newTitle || !newSubtitle) return;
             document.getElementById('display-theme-title').innerText = newTitle;
             document.getElementById('display-theme-subtitle').innerText = newSubtitle;
-
             toggleThemeModal();
-            showMessage('새로운 토론 주제가 설정되었습니다!', '📢');
+            showMessage('주제가 변경되었습니다!', '📢');
         }
 
-        // 댓글 추가
         function addComment() {
             const input = document.getElementById('comment-input');
             const container = document.getElementById('comment-container');
-            
-            if (!currentUser.isLoggedIn) {
-                document.getElementById('login-tip').classList.remove('hidden');
-                showMessage('먼저 로그인을 해주세요!', '🔒');
-                toggleLoginModal();
-                return;
-            }
+            if (!currentUser.isLoggedIn) { toggleLoginModal(); return; }
+            if (!input.value.trim()) return;
 
-            if (input.value.trim() === '') {
-                showMessage('내용을 입력해 주세요!', '✍️');
-                return;
-            }
-
-            const firstChar = currentUser.name.charAt(0);
             const div = document.createElement('div');
-            div.className = 'bg-purple-100 p-4 rounded-2xl shadow-sm border border-purple-200 flex items-start space-x-4 transform transition duration-500 scale-95 opacity-0';
-            
+            div.className = 'bg-purple-100 p-4 rounded-2xl border border-purple-200 flex items-start space-x-4 transition transform scale-95 opacity-0';
             div.innerHTML = `
-                <div class="w-10 h-10 rounded-full bg-purple-500 flex-shrink-0 flex items-center justify-center text-white font-bold text-lg">${firstChar}</div>
+                <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold">${currentUser.name.charAt(0)}</div>
                 <div>
-                    <p class="text-sm font-bold">${currentUser.name} (${currentUser.grade}) <span class="text-[10px] text-purple-400 font-normal ml-2">방금 전</span></p>
-                    <p class="text-gray-700 mt-1 text-sm">${input.value}</p>
-                </div>
-            `;
-
+                    <p class="text-sm font-bold">${currentUser.name} (${currentUser.grade})</p>
+                    <p class="text-gray-700 text-sm mt-1">${input.value}</p>
+                </div>`;
             container.appendChild(div);
-            setTimeout(() => { div.classList.remove('scale-95', 'opacity-0'); }, 10);
+            setTimeout(() => { div.classList.replace('scale-95', 'scale-100'); div.classList.replace('opacity-0', 'opacity-100'); }, 10);
             input.value = '';
             container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
         }
 
-        // 커스텀 메시지 박스
         function showMessage(text, icon) {
             const box = document.getElementById('custom-message-box');
             document.getElementById('msg-text').innerText = text;
             document.getElementById('msg-icon').innerText = icon;
-            
             box.classList.remove('hidden');
-            box.classList.add('animate-bounce');
-            
-            setTimeout(() => {
-                box.classList.add('hidden');
-                box.classList.remove('animate-bounce');
-            }, 2500);
+            setTimeout(() => box.classList.add('hidden'), 2500);
         }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section > div').forEach(el => {
-            el.classList.add('transition', 'duration-1000', 'opacity-0', 'translate-y-10');
-            observer.observe(el);
-        });
     </script>
 </body>
 </html>
